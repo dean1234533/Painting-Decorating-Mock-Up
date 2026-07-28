@@ -379,7 +379,7 @@ section{ position:relative; }
 .filmstrip{
   display:flex; gap:2px; overflow-x:auto; scroll-snap-type:x proximity;
   -webkit-overflow-scrolling:touch; scrollbar-width:none; cursor:grab;
-  margin-inline:calc(-1 * (100vw - var(--container)) / 2);
+  position:relative; left:50%; width:100vw; margin-left:-50vw;
   padding-inline:calc((100vw - var(--container))/2);
 }
 .filmstrip::-webkit-scrollbar{ display:none; }
