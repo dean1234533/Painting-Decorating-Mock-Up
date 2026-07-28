@@ -232,6 +232,11 @@
   safe(function(){
   var filmstrip = document.getElementById('filmstrip');
   if(filmstrip){
+    /* Some browsers restore a mid-scroll position on load/reload/bfcache-restore — force it back to the first panel */
+    filmstrip.scrollLeft = 0;
+    window.addEventListener('load', function(){ filmstrip.scrollLeft = 0; });
+    window.addEventListener('pageshow', function(){ filmstrip.scrollLeft = 0; });
+
     var fsDown = false, fsStartX = 0, fsScrollLeft = 0, fsMoved = false;
     filmstrip.addEventListener('mousedown', function(e){
       fsDown = true; fsMoved = false; filmstrip.classList.add('dragging');
