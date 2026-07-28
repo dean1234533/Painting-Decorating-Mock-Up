@@ -270,6 +270,15 @@ h3, .h3{ font-size:clamp(1.3rem, 1.1rem + 1vw, 1.9rem); line-height:1.15; }
   37%{ opacity:0; }
   100%{ opacity:0; }
 }
+/* Mobile uses a much gentler zoom — the desktop-strength Ken Burns effect crops
+   too aggressively on a narrow portrait frame and can push the subject out of shot */
+@keyframes heroCrossfadeMobile{
+  0%{ opacity:0; transform:scale(1.02); }
+  4%{ opacity:1; transform:scale(1.03); }
+  33%{ opacity:1; transform:scale(1.05); }
+  37%{ opacity:0; }
+  100%{ opacity:0; }
+}
 .hero-media::after{
   content:''; position:absolute; inset:0; z-index:1;
   background:linear-gradient(180deg, rgba(22,22,22,0.6) 0%, rgba(22,22,22,0.22) 38%, rgba(22,22,22,0.8) 100%);
@@ -295,7 +304,11 @@ h3, .h3{ font-size:clamp(1.3rem, 1.1rem + 1vw, 1.9rem); line-height:1.15; }
   .hero{
     height:auto; min-height:100svh; min-height:100dvh;
   }
-  .hero-media img{ object-position:center 30%; }
+  .hero-media img{
+    object-position:center 22%;
+    animation-name:heroCrossfadeMobile;
+    transform:scale(1.02);
+  }
   .hero-inner{ padding-bottom:max(40px, calc(env(safe-area-inset-bottom,0px) + 32px)); }
   .hero .container{ gap:22px; }
   .hero h1{ max-width:100%; font-size:clamp(2.5rem,10.5vw,3.2rem); }
