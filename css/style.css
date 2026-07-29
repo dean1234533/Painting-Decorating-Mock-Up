@@ -266,7 +266,7 @@ h3, .h3{ font-size:clamp(1.3rem, 1.1rem + 1vw, 1.9rem); line-height:1.15; }
   transform:scale(1.1);
 }
 .hero-media img:nth-child(1){ animation-delay:0s; }
-.hero-media img:nth-child(2){ animation-delay:6s; }
+.hero-media img:nth-child(2){ animation-delay:6s; object-position:28% 20%; }
 @keyframes heroCrossfade{
   0%{ opacity:0; transform:scale(1.1); }
   4%{ opacity:1; transform:scale(1.13); }
