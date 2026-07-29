@@ -152,11 +152,13 @@
 
 <main id="main">
 
-  <!-- HERO — crossfading sequence of decorators actually working -->
+  <!-- HERO — decorator painting a feature wall -->
   <section class="hero" aria-label="Introduction">
     <div class="hero-media">
-      <img src="https://images.unsplash.com/photo-1761986757577-140af8859587?w=1800&q=80&auto=format&fit=crop" alt="Decorator preparing a wall surface by sanding before painting" loading="eager" fetchpriority="high" width="1800" height="1200">
-      <img src="https://images.unsplash.com/photo-1742900280864-bcc27353ceba?w=1800&q=80&auto=format&fit=crop" alt="Decorator painting a house exterior render from a ladder" loading="eager" width="1800" height="1200">
+      <picture>
+        <source media="(max-width:1024px)" srcset="images/hero-mobile.jpg">
+        <img src="images/hero-desktop.jpg" alt="Decorator painting a dark feature wall with a roller in a period living room" loading="eager" fetchpriority="high" width="768" height="512">
+      </picture>
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
     <div class="container hero-inner">
