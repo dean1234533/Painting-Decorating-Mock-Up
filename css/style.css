@@ -58,6 +58,10 @@ h1,h2,h3,h4{ margin:0; font-family:var(--serif); font-weight:400; }
 p{ margin:0; }
 
 .container{ width:var(--container); max-width:1400px; margin-inline:auto; }
+/* Safe horizontal margins for tablet and mobile — nav, hero and every section share this */
+@media (max-width:1024px){ .container{ width:100%; padding-inline:56px; } }
+@media (max-width:768px){ .container{ padding-inline:36px; } }
+@media (max-width:480px){ .container{ padding-inline:28px; } }
 .bleed{ width:100%; }
 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
@@ -304,7 +308,7 @@ h3, .h3{ font-size:clamp(1.3rem, 1.1rem + 1vw, 1.9rem); line-height:1.15; }
 .hero-trust strong{ display:block; font-family:var(--serif); font-size:1.5rem; color:var(--cream); font-weight:400; }
 
 /* Mobile hero — taller, roomier, intentionally designed rather than compressed */
-@media (max-width:700px){
+@media (max-width:768px){
   .hero{
     height:auto; min-height:100svh; min-height:100dvh;
   }
@@ -314,17 +318,32 @@ h3, .h3{ font-size:clamp(1.3rem, 1.1rem + 1vw, 1.9rem); line-height:1.15; }
     display:block; opacity:1; animation:none;
     object-position:center 22%; transform:scale(1.02);
   }
-  .hero-inner{ padding-bottom:max(40px, calc(env(safe-area-inset-bottom,0px) + 32px)); }
-  .hero .container{ gap:22px; }
+  .hero-inner{
+    padding-top:calc(clamp(100px,18vw,140px) + env(safe-area-inset-top,0px));
+    padding-bottom:calc(clamp(80px,14vw,120px) + env(safe-area-inset-bottom,0px));
+  }
+  .hero .container{ gap:clamp(28px,5vw,36px); }
   .hero-eyebrow{ letter-spacing:0.1em; font-size:0.72rem; max-width:24ch; text-wrap:balance; align-items:flex-start; gap:12px; }
   .hero-eyebrow::before{ width:22px; margin-top:0.5em; }
   .hero h1{ max-width:100%; font-size:clamp(2.5rem,10.5vw,3.2rem); }
   .hero-sub{ flex-direction:column; align-items:stretch; gap:22px; }
   .hero-copy{ display:none; }
-  .hero-cta{ flex-direction:column; gap:12px; }
+  .hero-cta{ flex-direction:column; gap:14px; }
   .hero-cta .btn{ width:100%; justify-content:center; }
-  .hero-trust{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center; }
+  .hero-trust{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center; margin-top:4px; }
   .hero-trust > div{ min-width:0; }
+}
+
+/* Tablet hero — same composition as desktop, just with proper breathing room */
+@media (min-width:769px) and (max-width:1024px){
+  .hero-media img{ object-position:center 25%; }
+  .hero-inner{
+    padding-top:calc(120px + env(safe-area-inset-top,0px));
+    padding-bottom:calc(96px + env(safe-area-inset-bottom,0px));
+  }
+  .hero .container{ gap:32px; }
+  .hero-sub{ gap:32px; }
+  .hero-cta{ gap:20px; }
 }
 
 /* ============ SECTION SHELL ============ */
